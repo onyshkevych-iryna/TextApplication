@@ -1,0 +1,14 @@
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.exe
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.deps.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.runtimeconfig.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.runtimeconfig.dev.json
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.dll
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\bin\Debug\netcoreapp3.1\TextApp.pdb
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.csproj.AssemblyReference.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.AssemblyInfoInputs.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.AssemblyInfo.cs
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.csproj.CoreCompileInputs.cache
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.dll
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.pdb
+C:\Users\iryna.onyshkevych\OneDrive - Valtech\Bureau\programs\TextApp\TextApp\TextApp\obj\Debug\netcoreapp3.1\TextApp.genruntimeconfig.cache
