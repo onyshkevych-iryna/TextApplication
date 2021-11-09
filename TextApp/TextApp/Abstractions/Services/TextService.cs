@@ -9,11 +9,12 @@ namespace TextApp.Abstractions.Services
 {
     public class TextService:ITextService
     {
+        public StreamReader sr;
+
         public void WordsFrequency(string text, ref Dictionary<string, int> collectionOfWords)
         {
-            Regex reg_exp = new Regex("[^a-zA-Z0-9']");
-            text = reg_exp.Replace(text, " ");
-            //Console.WriteLine(text);
+            Regex exRegex = new Regex("[^a-zA-Z0-9']");
+            text = exRegex.Replace(text, " ");
             string[] words = text.Split(new char[] {
                 ' '
             }, StringSplitOptions.RemoveEmptyEntries);
@@ -23,11 +24,11 @@ namespace TextApp.Abstractions.Services
             Console.WriteLine("Statistics:");
             foreach (string word in result)
             {
-                CountStringOccurrences(text, word, collectionOfWords);
+                FrequencyOfWord(text, word, collectionOfWords);
             }
         }
 
-        public void CountStringOccurrences(string text, string word, Dictionary<string, int> dictionary)
+        public void FrequencyOfWord(string text, string word, Dictionary<string, int> dictionary)
         {
             int count = 0;
             int i = 0;
@@ -39,8 +40,9 @@ namespace TextApp.Abstractions.Services
             dictionary.Add(word, count);
         }
 
-        public void WordsPosition(StreamReader sr, string inputWord)
+        public void WordsPosition(string path, string inputWord)
         {
+            sr = new StreamReader(path);
             string line = null;
             List<string> listStrLineElements = null;
             int lineNumber = 1;

@@ -5,7 +5,7 @@ namespace TextApp.Abstractions.Interfaces
 {
     public interface ITextService
     {
-        void WordsFrequency(string text, ref Dictionary<string, int> collectionOfWords);
-        void WordsPosition(StreamReader sr, string inputWord);
+        public void WordsFrequency(string text, ref Dictionary<string, int> collectionOfWords);
+        public void WordsPosition(string path, string inputWord);
     }
 }
