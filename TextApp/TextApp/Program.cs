@@ -17,16 +17,43 @@ namespace TextApp
             string text = File.ReadAllText(path);
             Console.WriteLine("Text from a file:");
             Console.WriteLine(text);
-            Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
-
             #region FirstTask
-            Regex reg_exp = new Regex("[^a-zA-Z0-9']"); 
+            Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
+            WordsFrequency(text, ref collectionOfWords);
+            foreach (KeyValuePair<string, int> keyValue in collectionOfWords)
+            {
+                Console.WriteLine(keyValue.Key + ":" + keyValue.Value);
+            }
+            #endregion
+            #region SecondTask
+            Console.WriteLine("Please, input the word you're looking for");
+            string inputWord = Console.ReadLine();
+            WordsPosition(sr, inputWord);
+            #endregion
+        }
+
+        public static void CountStringOccurrences(string text, string word, Dictionary<string,int> dictionary)
+        {
+            int count = 0;
+            int i = 0;
+            while ((i = text.IndexOf(word, i)) != -1)
+            {
+                i += word.Length;
+                count++;
+            }
+
+            dictionary.Add(word, count);
+        }
+
+        public static void WordsFrequency(string text, ref Dictionary<string,int> collectionOfWords)
+        {
+            Regex reg_exp = new Regex("[^a-zA-Z0-9']");
             text = reg_exp.Replace(text, " ");
             //Console.WriteLine(text);
             string[] words = text.Split(new char[] {
                 ' '
             }, StringSplitOptions.RemoveEmptyEntries);
-            var distinctWords = words.Select(i => i).OrderByDescending(i=>i).Distinct();
+            var distinctWords = words.Select(i => i).OrderByDescending(i => i).Distinct();
             string[] result = distinctWords.ToArray();
             Console.WriteLine();
             Console.WriteLine("Statistics:");
@@ -34,16 +61,12 @@ namespace TextApp
             {
                 CountStringOccurrences(text, word, collectionOfWords);
             }
+        }
 
-            foreach (KeyValuePair<string, int> keyValue in collectionOfWords)
-            {
-                Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
-            }
-            #endregion
-            #region SecondTask
+        public static void WordsPosition(StreamReader sr, string inputWord)
+        {
             string line = null;
-            Console.WriteLine("Please, input the word you're looking for");
-            string inputWord = Console.ReadLine();
+
             List<string> listStrLineElements = null;
             int lineNumber = 1;
             while (!sr.EndOfStream)
@@ -57,20 +80,6 @@ namespace TextApp
                     Console.WriteLine(String.Format($"line: {lineNumber} number of a word: {item + 1}"));
                 lineNumber++;
             }
-            #endregion
-        }
-        public static void CountStringOccurrences(string text, string word, Dictionary<string,int> dictionary)
-        {
-            int count = 0;
-            int i = 0;
-            while ((i = text.IndexOf(word, i)) != -1)
-            {
-                i += word.Length;
-                count++;
-            }
-
-            dictionary.Add(word, count);
-            //Console.WriteLine("word \"{1}\" frequency: {0}", count, word);
         }
     }
 }
