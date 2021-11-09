@@ -32,7 +32,12 @@ namespace TextApp
             Console.WriteLine("Statistics:");
             foreach (string word in result)
             {
-                CountStringOccurrences(text, word);
+                CountStringOccurrences(text, word, collectionOfWords);
+            }
+
+            foreach (KeyValuePair<string, int> keyValue in collectionOfWords)
+            {
+                Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
             }
             #endregion
             #region SecondTask
@@ -54,7 +59,7 @@ namespace TextApp
             }
             #endregion
         }
-        public static void CountStringOccurrences(string text, string word)
+        public static void CountStringOccurrences(string text, string word, Dictionary<string,int> dictionary)
         {
             int count = 0;
             int i = 0;
@@ -63,7 +68,9 @@ namespace TextApp
                 i += word.Length;
                 count++;
             }
-            Console.WriteLine("word \"{1}\" frequency: {0}", count, word);
+
+            dictionary.Add(word, count);
+            //Console.WriteLine("word \"{1}\" frequency: {0}", count, word);
         }
     }
 }
