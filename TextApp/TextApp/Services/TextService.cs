@@ -5,14 +5,20 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using TextApp.Abstractions.Interfaces;
 
-namespace TextApp.Abstractions.Services
+namespace TextApp.Services
 {
     public class TextService:ITextService
     {
         public StreamReader sr;
-
-        public void WordsFrequency(string text, ref Dictionary<string, int> collectionOfWords)
+        private string Path { get; set; }
+        public TextService(string path)
         {
+            Path = path;
+        }
+
+        public Dictionary<string, int> WordsFrequency(string text)
+        {
+            Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
             Regex exRegex = new Regex("[^a-zA-Z0-9']");
             text = exRegex.Replace(text, " ");
             string[] words = text.Split(new char[] {
@@ -20,12 +26,11 @@ namespace TextApp.Abstractions.Services
             }, StringSplitOptions.RemoveEmptyEntries);
             var distinctWords = words.Select(i => i).OrderByDescending(i => i).Distinct();
             string[] result = distinctWords.ToArray();
-            Console.WriteLine();
-            Console.WriteLine("Statistics:");
             foreach (string word in result)
             {
                 FrequencyOfWord(text, word, collectionOfWords);
             }
+            return collectionOfWords;
         }
 
         public void FrequencyOfWord(string text, string word, Dictionary<string, int> dictionary)
@@ -40,12 +45,12 @@ namespace TextApp.Abstractions.Services
             dictionary.Add(word, count);
         }
 
-        public void WordsPosition(string path, string inputWord)
+        public void WordsPosition(string inputWord)
         {
-            sr = new StreamReader(path);
+            sr = new StreamReader(Path);
             string line = null;
             List<string> listStrLineElements = null;
-            int lineNumber = 1;
+            int lineNumber = 0;
             while (!sr.EndOfStream)
             {
                 line = sr.ReadLine();
@@ -54,7 +59,7 @@ namespace TextApp.Abstractions.Services
                     .Where(i => listStrLineElements[i] == inputWord)
                     .ToList();
                 foreach (var item in result1)
-                    Console.WriteLine(String.Format($"line: {lineNumber} number of a word: {item + 1}"));
+                    Console.WriteLine(String.Format($"line: {lineNumber+1} number of a word: {item + 1}"));
                 lineNumber++;
             }
         }
