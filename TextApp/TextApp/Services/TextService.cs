@@ -15,18 +15,24 @@ namespace TextApp.Services
             Path = path;
         }
 
+        public string[] AllWords()
+        {
+            string text = File.ReadAllText(Path);
+            Regex exRegex = new Regex("[^a-zA-Z0-9']");
+            text = exRegex.Replace(text, " ");
+            string[] words = text.Split(new char[]
+            {
+                ' '
+            }, StringSplitOptions.RemoveEmptyEntries);
+            return words;
+        }
+
         public Dictionary<string, int> WordsFrequency(string text)
         {
             Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
             try
             {
-                Regex exRegex = new Regex("[^a-zA-Z0-9']");
-                text = exRegex.Replace(text, " ");
-                string[] words = text.Split(new char[]
-                {
-                    ' '
-                }, StringSplitOptions.RemoveEmptyEntries);
-                var distinctWords = words.Select(i => i).OrderByDescending(i => i).Distinct();
+                var distinctWords = (from string word in AllWords() orderby word select word).Distinct();
                 string[] result = distinctWords.ToArray();
                 foreach (string word in result)
                 {
@@ -68,16 +74,21 @@ namespace TextApp.Services
                 string line = null;
                 List<string> listStrLineElements = null;
                 int lineNumber = 0;
-                while (!sr.EndOfStream)
-                {
-                    line = sr.ReadLine();
-                    listStrLineElements = line.Split(' ').ToList();
-                    var result = Enumerable.Range(0, listStrLineElements.Count)
-                        .Where(i => listStrLineElements[i] == inputWord)
-                        .ToList();
-                    foreach (var item in result)
-                        Console.WriteLine(String.Format($"line: {lineNumber + 1}  word number: {item + 1}"));
-                    lineNumber++;
+                if (!AllWords().Contains(inputWord))
+                    Console.WriteLine("There is no such word! Please, try again");
+                else{
+                    while (!sr.EndOfStream)
+                    {
+                        line = sr.ReadLine();
+                        listStrLineElements = line.Split(' ').ToList();
+                        var result = Enumerable.Range(0, listStrLineElements.Count)
+                            .Where(i => listStrLineElements[i] == inputWord)
+                            .ToList();
+
+                        foreach (var item in result)
+                            Console.WriteLine(String.Format($"line: {lineNumber + 1}  word number: {item + 1}"));
+                        lineNumber++;
+                    }
                 }
             }
             catch (Exception exception)

@@ -1,3 +1,7 @@
-hi hello good hello evening hi
-hello hi good, jkj.
-dfg hello
+Just Planck processes are generalisation of termal noise, Langevin processes constitute generalisation of shot noise.
+In general, Langevin processes permit larger class of problems to be solved than Planck processes and procedures.
+Provide more intuition, but the class of such processes that can be reduced exactly to analysis limited. 
+However, approximations (typically adiabatic ones) are easier to envision and to make the Langevin language.
+Langevin methods, least for linear and nonilinear systems, have the simplicity of the circuit equations of electrical engineering. 
+The noise source may arise from termal reservoirs Johnson noise, shot noise from the discreteness of particles.
+Once the noise represented the voltage source with known moments, the physical nature of the source not longer important. 
