@@ -32,7 +32,7 @@ namespace TextApp.Services
             Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
             try
             {
-                var distinctWords = (from string word in AllWords() orderby word select word).Distinct();
+                var distinctWords = AllWords().Select(i => i).OrderByDescending(i => i).Distinct();
                 string[] result = distinctWords.ToArray();
                 foreach (string word in result)
                 {

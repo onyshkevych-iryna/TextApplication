@@ -11,13 +11,13 @@ namespace TextApp
         {
             Console.WriteLine("Please, write the file address:");
             string path = Console.ReadLine();
-            TextService textService = new TextService(path);
             try
             {
                 string text = null;
                 text = File.ReadAllText(path);
                 Console.WriteLine("\nText from a file:");
                 Console.WriteLine(text);
+                TextService textService = new TextService(path);
                 Dictionary<string, int> collectionOfWords = textService.WordsFrequency(text);
                 Console.WriteLine("\nStatistics:");
                 foreach (KeyValuePair<string, int> keyValue in collectionOfWords)
