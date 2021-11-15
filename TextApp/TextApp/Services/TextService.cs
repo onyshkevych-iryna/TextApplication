@@ -17,8 +17,8 @@ namespace TextApp.Services
 
         public string[] AllWords()
         {
-            string text = File.ReadAllText(Path);
-            Regex exRegex = new Regex("[^a-zA-Z0-9']");
+            var text = File.ReadAllText(Path);
+            var exRegex = new Regex("[^a-zA-Z0-9']");
             text = exRegex.Replace(text, " ");
             string[] words = text.Split(new char[]
             {
@@ -29,7 +29,7 @@ namespace TextApp.Services
 
         public Dictionary<string, int> WordsFrequency(string text)
         {
-            Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
+            var collectionOfWords = new Dictionary<string, int>();
             try
             {
                 var result = AllWords().Select(i => i).OrderByDescending(i => i).Distinct().ToArray();
@@ -49,14 +49,13 @@ namespace TextApp.Services
         {
             try
             {
-                int count = 0;
-                int i = 0;
+                var count = 0;
+                var i = 0;
                 while ((i = text.IndexOf(word, i)) != -1)
                 {
                     i += word.Length;
                     count++;
                 }
-
                 dictionary.Add(word, count);
             }
             catch (Exception exception)
@@ -69,10 +68,10 @@ namespace TextApp.Services
         {
             try
             {
-                StreamReader sr = new StreamReader(Path);
+                var sr = new StreamReader(Path);
                 string line = null;
                 List<string> listStrLineElements = null;
-                int lineNumber = 0;
+                var lineNumber = 0;
                 if (!AllWords().Contains(inputWord))
                     Console.WriteLine("There is no such word! Please, try again");
                 else{
