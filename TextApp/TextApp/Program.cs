@@ -10,15 +10,15 @@ namespace TextApp
         static void Main(string[] args)
         {
             Console.WriteLine("Please, write the file address:");
-            string path = Console.ReadLine();
+            var path = Console.ReadLine();
             try
             {
                 string text = null;
                 text = File.ReadAllText(path);
                 Console.WriteLine("\nText from a file:");
                 Console.WriteLine(text);
-                TextService textService = new TextService(path);
-                Dictionary<string, int> collectionOfWords = textService.WordsFrequency(text);
+                var textService = new TextService(path);
+                var collectionOfWords = textService.WordsFrequency(text);
                 Console.WriteLine("\nStatistics:");
                 foreach (KeyValuePair<string, int> keyValue in collectionOfWords)
                 {
@@ -27,7 +27,7 @@ namespace TextApp
                 while (true)
                 {
                     Console.WriteLine("\nPlease, input the word you're looking for");
-                    string inputWord = Console.ReadLine();
+                    var inputWord = Console.ReadLine();
                     textService.WordsPosition(inputWord);
                 }
             }
