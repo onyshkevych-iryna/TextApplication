@@ -33,9 +33,11 @@ namespace TextApp.Services
             try
             {
                 var result = AllWords().Select(i => i).OrderByDescending(i => i).Distinct().ToArray();
-                foreach (string word in result)
+                foreach (var word in result)
                 {
-                    FrequencyOfWord(text, word, collectionOfWords);
+                    var wordOccurrence = AllWords().Select(w => w).Where(w => w == word);
+                    var wordCount = wordOccurrence.Count();
+                    collectionOfWords.Add(word, wordCount);
                 }
             }
             catch (Exception exception)
@@ -45,26 +47,7 @@ namespace TextApp.Services
             return collectionOfWords;
         }
 
-        public void FrequencyOfWord(string text, string word, Dictionary<string, int> dictionary)
-        {
-            try
-            {
-                var count = 0;
-                var i = 0;
-                while ((i = text.IndexOf(word, i)) != -1)
-                {
-                    i += word.Length;
-                    count++;
-                }
-                dictionary.Add(word, count);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
-        }
-
-        public void WordsPosition(string inputWord)
+    public void WordsPosition(string inputWord)
         {
             try
             {
