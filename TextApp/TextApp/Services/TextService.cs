@@ -32,8 +32,7 @@ namespace TextApp.Services
             Dictionary<string, int> collectionOfWords = new Dictionary<string, int>();
             try
             {
-                var distinctWords = AllWords().Select(i => i).OrderByDescending(i => i).Distinct();
-                string[] result = distinctWords.ToArray();
+                var result = AllWords().Select(i => i).OrderByDescending(i => i).Distinct().ToArray();
                 foreach (string word in result)
                 {
                     FrequencyOfWord(text, word, collectionOfWords);
@@ -84,7 +83,6 @@ namespace TextApp.Services
                         var result = Enumerable.Range(0, listStrLineElements.Count)
                             .Where(i => listStrLineElements[i] == inputWord)
                             .ToList();
-
                         foreach (var item in result)
                             Console.WriteLine(String.Format($"line: {lineNumber + 1}  word number: {item + 1}"));
                         lineNumber++;
