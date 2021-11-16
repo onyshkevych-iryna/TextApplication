@@ -44,7 +44,9 @@ namespace TextApp
                     {
                         textService.WordsPosition(userInput);
                     }
-                    Console.WriteLine("\nYou have quit the program");
+                    else 
+                        Console.WriteLine("\nYou have quit the program");
+                    
                 } while (userInput != "1");
             }
             catch (Exception exception)
