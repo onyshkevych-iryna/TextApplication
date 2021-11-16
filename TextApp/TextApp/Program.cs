@@ -35,13 +35,17 @@ namespace TextApp
                     Console.WriteLine(keyValue.Key + ":" + keyValue.Value);
                 }
 
-                while (true)
+                string userInput = null;
+                do
                 {
-                    Console.WriteLine("\nPlease, input the word you're looking for");
-                    var inputWord = Console.ReadLine();
-                    textService.WordsPosition(inputWord);
-
-                }
+                    Console.WriteLine("\nPlease, input the word you're looking for or enter \"1\" to quit the program\n");
+                    userInput = Console.ReadLine();
+                    if (userInput != "1")
+                    {
+                        textService.WordsPosition(userInput);
+                    }
+                    Console.WriteLine("\nYou have quit the program");
+                } while (userInput != "1");
             }
             catch (Exception exception)
             {
