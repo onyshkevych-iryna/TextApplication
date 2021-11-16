@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,7 +30,7 @@ namespace TextApp.Services
         public IOrderedEnumerable<KeyValuePair<string, int>> WordsFrequency(string text)
         {
             var collectionOfWords = new Dictionary<string, int>();
-            IOrderedEnumerable<KeyValuePair<string, int>> sortedDict = null;
+            IOrderedEnumerable<KeyValuePair<string, int>> sortedWordsCollection = null;
             try
             {
                 var result = AllWords().Select(i => i).OrderByDescending(i => i).Distinct().ToArray();
@@ -41,16 +40,16 @@ namespace TextApp.Services
                     var wordCount = wordOccurrence.Count();
                     collectionOfWords.Add(word, wordCount);
                 }
-                sortedDict = collectionOfWords.Select(w=>w).OrderByDescending(e=>e.Value);
+                sortedWordsCollection = collectionOfWords.Select(w=>w).OrderByDescending(e=>e.Value);
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
             }
-            return sortedDict;
-        }
-
-    public void WordsPosition(string inputWord)
+            return sortedWordsCollection;
+        } 
+        
+        public void WordsPosition(string inputWord)
         {
             try
             {
