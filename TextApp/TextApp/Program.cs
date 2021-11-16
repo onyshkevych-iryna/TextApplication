@@ -57,19 +57,5 @@ namespace TextApp
                 Console.WriteLine(exception.Message);
             }
         }
-
-        static void fileValidationCheck(string path, string fileExtension)
-        {
-            if (!File.Exists(path) || fileExtension != ".txt")
-            {
-                while (!File.Exists(path) || fileExtension != ".txt")
-                {
-                    Console.WriteLine("There is no such path or file's extension is not \".txt\" Please, try again:");
-                    path = Console.ReadLine();
-                    fileExtension = Path.GetExtension(path);
-                }
-
-            }
-        }
     }
 }
