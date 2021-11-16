@@ -9,10 +9,8 @@ namespace TextApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please, write the file address:");
-            var path = Console.ReadLine();
-            var fileExtension = Path.GetExtension(path);
-            CheckIfFileIsValid(ref path, ref fileExtension);
+            string path = null;
+            CheckIfFileIsValid(ref path);
             try
             {
                 string text = null;
@@ -46,17 +44,18 @@ namespace TextApp
             }
         }
 
-        static void CheckIfFileIsValid(ref string path, ref string fileExtension)
+        static void CheckIfFileIsValid(ref string path)
         {
-            if (!File.Exists(path) || fileExtension != ".txt")
-            {
-                while (!File.Exists(path) || fileExtension != ".txt")
-                {
+            var fileIsValid = false;
+            do 
+            { 
+                Console.WriteLine("Please, write the file address:");
+                path = Console.ReadLine();
+                fileIsValid = (!File.Exists(path) || Path.GetExtension(path) != ".txt");
+                if (fileIsValid)
                     Console.WriteLine("There is no such path or file's extension is not \".txt\". Please, try again:");
-                    path = Console.ReadLine();
-                    fileExtension = Path.GetExtension(path);
-                }
-            }
+            } 
+            while (fileIsValid);
         }
     }
 }
