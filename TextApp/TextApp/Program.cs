@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.IO;
-using System.Threading.Channels;
 using TextApp.Services;
 
 namespace TextApp
@@ -47,6 +45,7 @@ namespace TextApp
                 Console.WriteLine(exception.Message);
             }
         }
+
         static void CheckIfFileIsValid(ref string path, ref string fileExtension)
         {
             if (!File.Exists(path) || fileExtension != ".txt")
