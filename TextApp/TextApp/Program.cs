@@ -14,15 +14,7 @@ namespace TextApp
             Console.WriteLine("Please, write the file address:");
             var path = Console.ReadLine();
             var fileExtension = Path.GetExtension(path);
-            if (!File.Exists(path) || fileExtension != ".txt")
-            {
-                while (!File.Exists(path) || fileExtension != ".txt")
-                {
-                    Console.WriteLine("There is no such path or file's extension is not \".txt\". Please, try again:");
-                    path = Console.ReadLine();
-                    fileExtension = Path.GetExtension(path);
-                }
-            }
+            CheckIfFileIsValid(ref path, ref fileExtension);
             try
             {
                 string text = null;
@@ -53,6 +45,18 @@ namespace TextApp
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
+            }
+        }
+        static void CheckIfFileIsValid(ref string path, ref string fileExtension)
+        {
+            if (!File.Exists(path) || fileExtension != ".txt")
+            {
+                while (!File.Exists(path) || fileExtension != ".txt")
+                {
+                    Console.WriteLine("There is no such path or file's extension is not \".txt\". Please, try again:");
+                    path = Console.ReadLine();
+                    fileExtension = Path.GetExtension(path);
+                }
             }
         }
     }
